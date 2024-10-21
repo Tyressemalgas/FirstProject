@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 public class AddingTasksFeatures {
 
     public static void main(String[] args) {
-        // Menu for the user to choose an option
+        // A Menu for the user to choose an option
         String menu = "Menu:\n" +
                       "1) Register\n" +
                       "2) Login\n" +
@@ -20,15 +20,15 @@ public class AddingTasksFeatures {
                 choice = Integer.parseInt(choiceInput);
 
                 switch (choice) {
-                    case 1: // Register
+                    case 1: // To Register
                         registerUser();
                         break;
 
-                    case 2: // Login
+                    case 2: // To Login
                         loginUser();
                         break;
 
-                    case 3: // Cancel
+                    case 3: // To Cancel
                         JOptionPane.showMessageDialog(null, "Operation canceled. Goodbye!");
                         System.exit(0);
                         break;
@@ -47,11 +47,11 @@ public class AddingTasksFeatures {
     }
 
     private static void registerUser() {
-        // Get first name and last name from the user
+        // To Get first name and last name from the user
         String firstName = JOptionPane.showInputDialog("Enter your first name:");
         String lastName = JOptionPane.showInputDialog("Enter your last name:");
 
-        // Create a new Login object for the user to register
+        // A new Login object for the user to register
         Login login = new Login(firstName, lastName);
 
         String username = JOptionPane.showInputDialog("Enter a username (with an underscore and no more than 5 characters):");
@@ -59,14 +59,14 @@ public class AddingTasksFeatures {
         String registrationMessage = login.registerUser(username, password);
         JOptionPane.showMessageDialog(null, registrationMessage);
 
-        // If registration was successful, proceed to login
+        // If the registration was successful, then proceed to login
         if (registrationMessage.equals("User successfully registered.")) {
             loginUser(login);
         }
     }
 
     private static void loginUser() {
-        // Prompt the user for login details
+        // Prompting the user for login details
         String loginFirstName = JOptionPane.showInputDialog("Enter your first name:");
         String loginLastName = JOptionPane.showInputDialog("Enter your last name:");
         Login existingLogin = new Login(loginFirstName, loginLastName);
@@ -75,11 +75,11 @@ public class AddingTasksFeatures {
     }
 
     private static void loginUser(Login login) {
-        // Prompt the user for login details
+        // Prompting the user for login details
         String enteredUsername = JOptionPane.showInputDialog("Enter your username:");
         String enteredPassword = JOptionPane.showInputDialog("Enter your password:");
 
-        // Attempt to log in
+        // An Attempt to log in
         String loginMessage = login.returnLoginStatus(enteredUsername, enteredPassword);
         JOptionPane.showMessageDialog(null, loginMessage);
 
@@ -90,7 +90,7 @@ public class AddingTasksFeatures {
     }
 
     private static void manageTasks() {
-        // Main menu loop
+        // A Main menu loop
         boolean running = true;
         ArrayList<Task> tasks = new ArrayList<>();
         int totalHours = 0;
@@ -109,15 +109,15 @@ public class AddingTasksFeatures {
                     choice = Integer.parseInt(choiceInput);
 
                     switch (choice) {
-                        case 1: // Add tasks
+                        case 1: // Option 1 is to Add tasks
                             totalHours += addTasks(tasks);
                             break;
 
-                        case 2: // Show report
+                        case 2: // Option 2 is to Show report
                             showReport(tasks);
                             break;
 
-                        case 3: // Quit
+                        case 3: // Option 3 is to Quit if the user wishes to Quit
                             running = false;
                             JOptionPane.showMessageDialog(null, "Total hours across all tasks: " + Task.returnTotalHours(tasks));
                             break;
@@ -130,13 +130,13 @@ public class AddingTasksFeatures {
                     JOptionPane.showMessageDialog(null, "Please enter a valid number.");
                 }
             } else {
-                running = false; // Exit if the user closes the input dialog
+                running = false; // Exit if only the user closes the input dialog
             }
         }
     }
 
     private static int addTasks(ArrayList<Task> tasks) {
-        // Ask for the number of tasks to enter
+        // Ask the user for the number of tasks to enter
         String taskCountInput = JOptionPane.showInputDialog("How many tasks would you like to enter?");
         int taskCount = Integer.parseInt(taskCountInput);
         int totalHours = 0;

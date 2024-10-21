@@ -16,18 +16,18 @@ class Login {
     private final String lastName;
 
     
-    // Constructor
+    //A Method used to initialize objects.
     public Login(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    // Method to check if the username is valid
+    // A Method used to check if the username is valid
     public boolean checkUserName(String username) {
         return username.contains("_") && username.length() <= 5;
     }
 
-    // Method to check if the password is complex enough
+    // A Method usedto check if the password is complex enough
     public boolean checkPasswordComplexity(String password) {
         boolean hasUpperCase = false;
         boolean hasLowerCase = false;
@@ -47,7 +47,7 @@ class Login {
         return false;
     }
 
-    // Method to register a user
+    // A Method used to register a user
     public String registerUser(String username, String password) {
         if (checkUserName(username) && checkPasswordComplexity(password)) {
             this.registeredUsername = username;
@@ -57,12 +57,12 @@ class Login {
         return "Registration failed. Please try again.";
     }
 
-    // Method to verify login details
+    // A Method used to verify the login details
     public boolean loginUser(String username, String password) {
         return username.equals(this.registeredUsername) && password.equals(this.registeredPassword);
     }
 
-    // Method to return login status message
+    // A Method used to return the login status message
     public String returnLoginStatus(String username, String password) {
         if (loginUser(username, password)) {
             return "Welcome " + this.firstName + " " + this.lastName + ", it is great to see you again.";

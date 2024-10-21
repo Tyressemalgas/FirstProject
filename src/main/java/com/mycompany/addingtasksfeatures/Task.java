@@ -19,7 +19,7 @@ class Task {
     private final String taskStatus;
     private final String taskID;
 
-    // Constructor
+    // Methods used to initialize objects.
     public Task(String taskName, String taskDescription, String developerFirstName, String developerLastName, String taskStatus, int taskDuration, String taskStatus1) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
@@ -30,12 +30,12 @@ class Task {
         this.taskID = createTaskID();
     }
 
-    // Method to check if the task description is valid
+    // A Method to check if the task description is valid
     public static boolean checkTaskDescription(String description) {
         return description.length() <= 50;
     }
 
-    // Method to create the task ID
+    // A Method to create the task ID
     public String createTaskID() {
     // Get the first two letters of the task name, ensuring they are uppercase
     String namePart = taskName.length() >= 2 ? taskName.substring(0, 2).toUpperCase() : taskName.toUpperCase();
@@ -43,10 +43,10 @@ class Task {
     // Get the last three letters of the developer's last name, ensuring they are uppercase
     String lastNamePart = developerLastName.length() >= 3 ? developerLastName.substring(developerLastName.length() - 3).toUpperCase() : developerLastName.toUpperCase();
 
-    // Return the formatted Task ID
+    // To Return the formatted Task ID
     return namePart + ":" + taskDuration + ":" + lastNamePart;
 }
-    // Method to return task details
+    // A Method to return task details
     public String printTaskDetails() {
         return "Task Status: " + taskStatus + "\n" +
                "Developer: " + developerFirstName + " " + developerLastName + "\n" +
@@ -56,7 +56,7 @@ class Task {
                "Task Duration: " + taskDuration + " hours";
     }
 
-    // Method to calculate total task hours
+    // A Method to calculate the total task hours
     public static int returnTotalHours(ArrayList<Task> tasks) {
         int totalHours = 0;
         for (Task task : tasks) {
@@ -65,7 +65,7 @@ class Task {
         return totalHours;
     }
 
-    // Getter for the developer's last name
+    // A Getter for the developer's last name
     public String getDeveloperLastName() {
         return this.developerLastName;
     }
