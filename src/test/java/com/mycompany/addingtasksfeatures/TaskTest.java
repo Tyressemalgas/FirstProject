@@ -59,19 +59,19 @@ void testTaskDescriptionLength() {
     void testTotalHoursAccumulation() {
         // Test case 1 with Task1 and Task2
         ArrayList<Task> tasks = new ArrayList<>();
-        tasks.add(new Task("Login Feature", "Create login to authenticate users", "Robyn", "Harrison", "To Do", 0, "To Do"));
-        tasks.add(new Task("Add Task Feature", "Create Add Task feature to add task users", "Mike", "Smith", "To Do", 1, "To Do"));
+        tasks.add(new Task("Login Feature", "Create login to authenticate users", "Robyn", "Harrison", "To Do", 8, "To Do"));
+        tasks.add(new Task("Add Task Feature", "Create Add Task feature to add task users", "Mike", "Smith", "To Do", 10, "To Do"));
 
         int totalHours = Task.returnTotalHours(tasks);
         assertEquals(18, totalHours);
 
         // Test case 2 with additional data
         ArrayList<Task> additionalTasks = new ArrayList<>();
-        additionalTasks.add(new Task("Task1", "Description1", "Dev1", "Name1", "To Do", 0, "To Do"));
-        additionalTasks.add(new Task("Task2", "Description2", "Dev2", "Name2", "To Do", 1, "To Do"));
-        additionalTasks.add(new Task("Task3", "Description3", "Dev3", "Name3", "To Do", 2, "To Do"));
-        additionalTasks.add(new Task("Task4", "Description4", "Dev4", "Name4", "To Do", 3, "To Do"));
-        additionalTasks.add(new Task("Task5", "Description5", "Dev5", "Name5", "To Do", 4, "To Do"));
+        additionalTasks.add(new Task("Task1", "Description1", "Dev1", "Name1", "To Do", 10, "To Do"));
+        additionalTasks.add(new Task("Task2", "Description2", "Dev2", "Name2", "To Do", 12, "To Do"));
+        additionalTasks.add(new Task("Task3", "Description3", "Dev3", "Name3", "To Do", 55, "To Do"));
+        additionalTasks.add(new Task("Task4", "Description4", "Dev4", "Name4", "To Do", 11, "To Do"));
+        additionalTasks.add(new Task("Task5", "Description5", "Dev5", "Name5", "To Do", 1, "To Do"));
 
         int totalAdditionalHours = Task.returnTotalHours(additionalTasks);
         assertEquals(89, totalAdditionalHours);
@@ -91,7 +91,7 @@ public void testCheckTaskDescription() {
     @Test
     public void testCreateTaskID() {
         System.out.println("createTaskID");
-        Task instance = new Task("Sample Task", "Sample Description", "John", "Doe", "To Do", 1, "To Do");
+        Task instance = new Task("Sample Task", "Sample Description", "", "Doe", "To Do", 1, "To Do");
         String expResult = "SA:1:DOE";
         String result = instance.createTaskID();
         assertEquals(expResult, result);
@@ -109,8 +109,8 @@ public void testCheckTaskDescription() {
     public void testReturnTotalHours() {
         System.out.println("returnTotalHours");
         ArrayList<Task> tasks = new ArrayList<>();
-        tasks.add(new Task("Task1", "Description1", "Dev1", "Name1", "To Do", 0, "To Do"));
-        tasks.add(new Task("Task2", "Description2", "Dev2", "Name2", "To Do", 1, "To Do"));
+        tasks.add(new Task("Task1", "Description1", "Dev1", "Name1", "To Do", 5, "To Do"));
+        tasks.add(new Task("Task2", "Description2", "Dev2", "Name2", "To Do", 10, "To Do"));
         int result = Task.returnTotalHours(tasks);
         assertEquals(15, result);
     }
