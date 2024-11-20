@@ -10,63 +10,65 @@ import java.util.ArrayList;
  *
  * @author User
  */
-class Task {
-    private final String taskName;
-    private final String taskDescription;
-    private final String developerFirstName;
-    private final String developerLastName;
-    private final int taskDuration;
-    private final String taskStatus;
-    private final String taskID;
+public class Task {
+    private String taskName;
+    private String taskDescription;
+    private String taskId;
+    private String devFirstName;
+    private String devLastName;
+    private int taskDuration;
+    private String taskStatus;
 
-    // Methods used to initialize objects.
-    public Task(String taskName, String taskDescription, String developerFirstName, String developerLastName, String taskStatus, int taskDuration, String taskStatus1) {
+    public Task(String taskName, String taskDescription, String taskId, String devFirstName, String devLastName, int taskDuration, String taskStatus) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
-        this.developerFirstName = developerFirstName;
-        this.developerLastName = developerLastName;
+        this.taskId = taskId;
+        this.devFirstName = devFirstName;
+        this.devLastName = devLastName;
         this.taskDuration = taskDuration;
         this.taskStatus = taskStatus;
-        this.taskID = createTaskID();
     }
 
-    // A Method to check if the task description is valid
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public String getTaskDescription() {
+        return taskDescription;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public String getDevFirstName() {
+        return devFirstName;
+    }
+
+    public String getDevLastName() {
+        return devLastName;
+    }
+
+    public int getTaskDuration() {
+        return taskDuration;
+    }
+
+    public String getTaskStatus() {
+        return taskStatus;
+    }
+
+    // Validation method for task description
     public static boolean checkTaskDescription(String description) {
-        return description.length() <= 50;
+        return description != null && description.length() <= 50;
     }
 
-    // A Method to create the task ID
-    public String createTaskID() {
-    // Get the first two letters of the task name, ensuring they are uppercase
-    String namePart = taskName.length() >= 2 ? taskName.substring(0, 2).toUpperCase() : taskName.toUpperCase();
-    
-    // Get the last three letters of the developer's last name, ensuring they are uppercase
-    String lastNamePart = developerLastName.length() >= 3 ? developerLastName.substring(developerLastName.length() - 3).toUpperCase() : developerLastName.toUpperCase();
-
-    // To Return the formatted Task ID
-    return namePart + ":" + taskDuration + ":" + lastNamePart;
-}
-    // A Method to return task details
+    // Method to print task details
     public String printTaskDetails() {
-        return "Task Status: " + taskStatus + "\n" +
-               "Developer: " + developerFirstName + " " + developerLastName + "\n" +
+        return "Task ID: " + taskId + "\n" +
                "Task Name: " + taskName + "\n" +
-               "Task Description: " + taskDescription + "\n" +
-               "Task ID: " + taskID + "\n" +
-               "Task Duration: " + taskDuration + " hours";
-    }
-
-    // A Method to calculate the total task hours
-    public static int returnTotalHours(ArrayList<Task> tasks) {
-        int totalHours = 0;
-        for (Task task : tasks) {
-            totalHours += task.taskDuration;
-        }
-        return totalHours;
-    }
-
-    // A Getter for the developer's last name
-    public String getDeveloperLastName() {
-        return this.developerLastName;
+               "Description: " + taskDescription + "\n" +
+               "Developer: " + devFirstName + " " + devLastName + "\n" +
+               "Duration: " + taskDuration + " hours\n" +
+               "Status: " + taskStatus;
     }
 }
